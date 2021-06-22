@@ -34,7 +34,7 @@
 \firstname{}
 \familyname{屈轩}
 
-\quote{求职意向: Linux C 开发工程师}
+\quote{求职意向: Golang 后台开发工程师 }
 %\title{ 个人简历 }
 
 %----------------------------------------------------------------------------------
@@ -47,7 +47,7 @@
 \vspace*{-15mm}
 %% 个人信息
 \section {基本信息}	
-\cvdoubleitem{性别:}{男}{年龄:}{25岁}	
+\cvdoubleitem{性别:}{男}{年龄:}{28岁}	
 \cvdoubleitem{学校:}{陕西科技大学}{专业:}{网络工程}
 \cvdoubleitem{电话:}{17710791243}{邮箱:}{qu\_xuan@icloud.com}
 %\cventry{学校：}{陕西科技大学}{}{}{}{}
@@ -59,18 +59,23 @@
 
 
 \section{专业技能}
-\cvitem{编程语言: }{ C, X86汇编, PHP, Python, Shell. }
+\cvitem{编程语言: }{ Golnag, C, X86汇编, PHP, Python, Shell. }
 \cvitem{知识储备: }{ 正则表达式, 操作系统原理, Linux C环境编程, Makefile编写, 多线程多进程. }
-\cvitem{工具使用: }{ Git, MySql, Vim, Tmux, GCC. }
+\cvitem{工具使用: }{ Git, MySQL, Vim, Tmux, GCC, Ansible. }
 
 
 \section{工作经历}
-\tllabelcventry{2016}{2018}{2016.6 - 2018.3}{金山云网络科技有限公司}{}{}{}{
-    \begin{itemize}
-    \item 负责公司自动化运维开发工作.
-    \item 负责维护公司zabbix监控系统,支持业务监控开发工作.
-    \end{itemize}
-}
+\tllabelcventry{2012.8}{2012.12}{2016.06-2018.3}{金山云网络科技有限公司}{}{}{}{
+\begin{tightitemize}
+        \item 负责公司自动化运维开发工作.
+        \item 负责维护公司zabbix监控系统,支持业务监控开发工作.
+\end{tightitemize}}
+\tllabelcventry{2012.10}{2013.6}{2018.4-2020.11}{云联万维}{}{}{}{
+\begin{tightitemize}
+        \item 负责公司云平台公有云资源纳管功能. 
+        \item 负责公司公有云认证服务开发.
+\end{tightitemize}}
+
 
 %\subsection{2016 - Now  金山云网络科技有限公司}
 %\cvlistitem{负责公司自动化运维平台开发工作.}
@@ -78,19 +83,6 @@
 
 
 \section{ 项目经验 }
-\subsection{ 自动化运维系统 }
-\cvitem{项目描述: }{ 一个可以方便运维人员自助添加、删除、更新、屏蔽监控的系统. }
-\cvitem{项目职责: }{ 负责整个系统开发、部署、维护及使用文档编写. }
-\cvitem{实现原理: }{
-    \itshape
-    \begin{itemize}
-    \item 前端提供Web页面供运维人员使用,由PHP编写(重构前端删除屏蔽页面,比原系统更简洁方便,提高运维效率).
-    \item 后端基于flask框架,采用Ansible2.0 API进行业务逻辑处理,下发策略变更仅需要更新Playbook,无须重启系统.
-    \item 耗时任务使用celery进行管理,任务失败会有邮件通知并输出任务详情信息,方便快速定位解决问题.
-    \item 各监控机上部署一个Web API(由C编写,使用了json-c,libconfig,liboping,net-snmp,openssl库)用来获取到目标点的延时丢包及交换机名称信息.
-    \end{itemize}
-    \upshape
-}
 
 \subsection{ 微内核实现 }
 \cvitem{项目描述: }{ 一个支持多进程多线程、中断处理、虚拟内存管理、虚拟文件系统、系统调用的x86微内核实现. }
@@ -106,17 +98,28 @@
     \upshape
 }
 
-
-\subsection{ 报警分布系统 }
-\cvitem{项目描述: }{ 一个可以形象展示查询历史报警分布、报警详情及支出成本的系统,方便财务计费及报警优化. }
-\cvitem{项目职责: }{ 负责整个前后端逻辑编写并维护报警类型 }
+\subsection{ 公有云认证统一登录 }
+\cvitem{项目描述: }{ 支持公有云免认证一键登录. }
+\cvitem{项目职责: }{ 负责认证，权限，跳转登录功能. }
 \cvitem{实现原理: }{
     \itshape
     \begin{itemize}
-    \item 前端增加一个配置报警类型页面(使用正则表达式).
-    \item 前端提供页面支持以产品线、时间维度查询展示报警分布及详情.
-    \item 后端使用zabbix API周期拉取历史报警,通过正则表达式匹配报警类型,计算并录入MySql数据库.
-    \item 前端使用了datatable,highcharts等javascript插件,用以表格曲线图和饼图展示.
+    \item 借助公有云提供SAML认证方式.
+    \item 配置用户相关权限.
+    \item 使用SAML2.0协议登录跳转到公有云控制台.
+    \end{itemize}
+    \upshape
+}
+
+\subsection{ 公有云资源统一纳管 }
+\cvitem{项目描述: }{ 纳管公有云资源. }
+\cvitem{项目职责: }{ 负责公有云RDS, NAS, VM, WAF等资源纳管. }
+\cvitem{实现原理: }{
+    \itshape
+    \begin{itemize}
+    \item 借助公有云提供API, 获取公有云资源.
+    \item 建立统一资源模型, 将公有云资源同步到本地.
+    \item 支持公有云资源相应操作, 例如: 创建，删除，更新.
     \end{itemize}
     \upshape
 }
